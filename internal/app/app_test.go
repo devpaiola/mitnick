@@ -73,7 +73,7 @@ func TestGitleaksRequiresExplicitScanOptIn(t *testing.T) {
 
 func TestScanAIRequiresConnectedCLIAndOneScanConsent(t *testing.T) {
 	root := t.TempDir()
-	t.Setenv("XDG_CONFIG_HOME", t.TempDir())
+	setIsolatedUserConfigHome(t)
 	var stdout, stderr bytes.Buffer
 	if err := Run(context.Background(), []string{"scan", root, "--ai"}, &stdout, &stderr); err == nil || !strings.Contains(err.Error(), "nenhuma IA conectada") {
 		t.Fatalf("scan without a selected CLI returned %v", err)
@@ -89,6 +89,15 @@ func TestScanAIRequiresConnectedCLIAndOneScanConsent(t *testing.T) {
 
 func shellQuote(value string) string {
 	return "'" + strings.ReplaceAll(value, "'", "'\\''") + "'"
+}
+
+func setIsolatedUserConfigHome(t *testing.T) string {
+	t.Helper()
+	dir := t.TempDir()
+	t.Setenv("HOME", dir)
+	t.Setenv("APPDATA", dir)
+	t.Setenv("XDG_CONFIG_HOME", dir)
+	return dir
 }
 
 func TestExitCodesSeparateFindingsFromErrors(t *testing.T) {
@@ -123,8 +132,7 @@ func TestAIConnectPersistsCLIAndDetectDoesNotExecuteCLIs(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("PATH marker fixture uses a shell script")
 	}
-	configHome := t.TempDir()
-	t.Setenv("XDG_CONFIG_HOME", configHome)
+	setIsolatedUserConfigHome(t)
 	binDir := t.TempDir()
 	marker := filepath.Join(t.TempDir(), "provider-executed")
 	for _, name := range []string{"codex", "claude"} {
@@ -166,8 +174,7 @@ func TestAITestRunsContentFreePromptThroughSelectedCLI(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("fixture uses a shell script")
 	}
-	configHome := t.TempDir()
-	t.Setenv("XDG_CONFIG_HOME", configHome)
+	setIsolatedUserConfigHome(t)
 	if _, err := config.WriteAIProfile(config.AIConfig{Provider: "codex"}); err != nil {
 		t.Fatal(err)
 	}
@@ -344,7 +351,7 @@ func assertProjectSnapshot(t *testing.T, root string, before map[string][]byte) 
 }
 
 func TestAIOptInWithoutConnectedCLIStopsBeforeScanning(t *testing.T) {
-	t.Setenv("XDG_CONFIG_HOME", t.TempDir())
+	setIsolatedUserConfigHome(t)
 	root := t.TempDir()
 	if err := os.WriteFile(filepath.Join(root, "app.js"), []byte("eval(input);\n"), 0o600); err != nil {
 		t.Fatal(err)
@@ -506,7 +513,7 @@ func TestScanWithoutAIDoesNotCallConfiguredProvider(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("fixture uses a shell script")
 	}
-	t.Setenv("XDG_CONFIG_HOME", t.TempDir())
+	setIsolatedUserConfigHome(t)
 	if _, err := config.WriteAIProfile(config.AIConfig{Provider: "codex"}); err != nil {
 		t.Fatal(err)
 	}

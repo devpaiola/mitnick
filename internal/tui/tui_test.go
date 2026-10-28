@@ -102,7 +102,10 @@ func TestTUIListsAndConnectsSelectedCLI(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		t.Skip("fixture uses a shell script")
 	}
-	t.Setenv("XDG_CONFIG_HOME", t.TempDir())
+	dir := t.TempDir()
+	t.Setenv("HOME", dir)
+	t.Setenv("APPDATA", dir)
+	t.Setenv("XDG_CONFIG_HOME", dir)
 	binDir := t.TempDir()
 	script := `#!/bin/sh
 if [ "$1" = "--version" ]; then echo 2.1.268; exit 0; fi

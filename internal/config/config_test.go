@@ -72,6 +72,8 @@ func TestProjectConfigCannotSelectAICLI(t *testing.T) {
 
 func TestAIProfileIsPrivateAndNeverStoresCredentials(t *testing.T) {
 	dir := t.TempDir()
+	t.Setenv("HOME", dir)
+	t.Setenv("APPDATA", dir)
 	t.Setenv("XDG_CONFIG_HOME", dir)
 	path, err := WriteAIProfile(AIConfig{Provider: "codex"})
 	if err != nil {
@@ -105,6 +107,8 @@ func TestAIProfileIsPrivateAndNeverStoresCredentials(t *testing.T) {
 
 func TestAIProfileRejectsUnknownMutableCapabilitiesAndSymlinks(t *testing.T) {
 	dir := t.TempDir()
+	t.Setenv("HOME", dir)
+	t.Setenv("APPDATA", dir)
 	t.Setenv("XDG_CONFIG_HOME", dir)
 	path, err := DefaultAIProfilePath()
 	if err != nil {
