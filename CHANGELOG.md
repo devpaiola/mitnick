@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased — 0.1.0-dev
+## 0.1.0 — 2026-10-28
 
 - Integrações de IA agora detectam e conectam o Codex CLI ou Claude Code autenticado pelo usuário; seleção de endpoint, modelo, API key e tarifas removida. A análise exige consentimento por scan e usa o modelo/conta do CLI selecionado.
 - Chamadas de revisão usam modos sem ferramentas, contexto via stdin, diretório temporário e parsing JSON estrito; o teste de conexão envia apenas uma instrução fixa, sem conteúdo do projeto.
@@ -24,7 +24,8 @@
 - Saídas terminal, JSON e SARIF; política de threshold e supressões justificadas.
 - Revisão por IA opt-in com contexto limitado a trechos de código mascarados e fingerprints para rastreabilidade; respostas consultivas não são executadas nem aplicadas.
 - Snapshot de advisories npm ampliado para lodash, axios, next, React Server Components e minimist com intervalos revisados segundo GitHub Advisory Database; arquivos de configuração MCP Gemini/Copilot passam a ser reconhecidos.
-- Empacotador reproduzível para Linux/macOS/Windows `amd64`, SBOM SPDX 2.3 e `SHA256SUMS`; CI declara Go 1.26 e 1.27.
+- Instaladores shell/PowerShell e pacotes para Linux/macOS/Windows `amd64` e `arm64`, com nomes estáveis, SBOM SPDX 2.3 e `SHA256SUMS`.
+- Empacotador reproduzível e workflow de release com CI em Go 1.26/1.27.
 - GitHub Actions upstream fixadas por SHA completo, com versões de release registradas nos comentários.
 - Workflow de release por tag com verificação de checksums, atestação de proveniência e publicação de pacotes; tags com sufixo de pré-release são publicadas como pré-releases.
 - Baseline de desempenho ampliada com um self-scan do repositório além dos fixtures.

@@ -29,7 +29,7 @@ for target in linux/amd64 linux/arm64 darwin/amd64 darwin/arm64 windows/amd64 wi
 		cd "$root"
 		GOOS="$goos" GOARCH="$goarch" CGO_ENABLED=0 go build \
 			-trimpath -buildvcs=false \
-			-ldflags "-s -w -X github.com/mitnick-security/mitnick/internal/app.Version=$version" \
+			-ldflags "-s -w -X github.com/mitnick-security/mitnick/internal/app.Version=$version -X github.com/mitnick-security/mitnick/internal/tui.buildVersion=$version" \
 			-o "$stage/$binary" ./cmd/mitnick
 	)
 	cp "$root/LICENSE" "$root/README.md" "$root/CHANGELOG.md" "$root/SECURITY.md" \

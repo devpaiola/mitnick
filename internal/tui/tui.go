@@ -30,6 +30,8 @@ import (
 	"github.com/mitnick-security/mitnick/internal/scanner"
 )
 
+var buildVersion = "0.1.0-dev"
+
 type screen string
 
 const (
@@ -954,7 +956,7 @@ Policies & Privacy
 }
 
 func (m *Model) viewDiagnostics(b *strings.Builder) {
-	fmt.Fprintf(b, "\nSystem Diagnostics\nMitnick build: %s\nPlatform: %s/%s\nGo: %s\nScan target: %s\n", "0.1.0-dev", runtime.GOOS, runtime.GOARCH, runtime.Version(), safePreviewLine(m.target))
+	fmt.Fprintf(b, "\nSystem Diagnostics\nMitnick build: %s\nPlatform: %s/%s\nGo: %s\nScan target: %s\n", buildVersion, runtime.GOOS, runtime.GOARCH, runtime.Version(), safePreviewLine(m.target))
 	if cfg, path, err := config.Load(""); err != nil {
 		fmt.Fprintf(b, "Configuração: inválida (%s)\n", safePreviewLine(err.Error()))
 	} else {

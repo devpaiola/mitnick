@@ -2,7 +2,7 @@
 
 Mitnick é uma ferramenta local-first em Go para procurar riscos comuns em aplicações JavaScript/TypeScript e configurações de agentes/MCP. Em terminal interativo, `mitnick` abre a TUI; o scan padrão é passivo: não inicia o projeto, não executa comandos declarados nos arquivos, não inicia engines externas e não acessa a rede.
 
-> Estado: implementação inicial `0.1.0-dev`. O conjunto de regras e a base local de advisories são limitados; este projeto não promete ausência de vulnerabilidades nem substitui uma auditoria especializada.
+> Versão inicial `0.1.0`. O conjunto de regras e a base local de advisories são limitados; este projeto não promete ausência de vulnerabilidades nem substitui uma auditoria especializada.
 
 O Mitnick é open source e opera localmente. Scans, inteligência e relatórios não dependem de conta ou serviço Cloud.
 
