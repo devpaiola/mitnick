@@ -3,7 +3,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$repository = 'mitnick-security/mitnick'
+$repository = 'devpaiola/mitnick'
 $baseUrl = "https://github.com/$repository/releases/latest/download"
 
 if (-not $env:LOCALAPPDATA) {

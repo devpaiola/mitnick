@@ -11,7 +11,7 @@ O Mitnick é open source e opera localmente. Scans, inteligência e relatórios 
 Em Linux ou macOS, instale a versão mais recente publicada pelo GitHub:
 
 ```sh
-curl -fsSL https://raw.githubusercontent.com/mitnick-security/mitnick/main/scripts/install.sh -o install-mitnick.sh
+curl -fsSL https://raw.githubusercontent.com/devpaiola/mitnick/main/scripts/install.sh -o install-mitnick.sh
 sh install-mitnick.sh
 rm install-mitnick.sh
 ```
@@ -20,7 +20,7 @@ No Windows 10 ou mais recente, abra o PowerShell:
 
 ```powershell
 $installer = "$env:TEMP\install-mitnick.ps1"
-Invoke-WebRequest https://raw.githubusercontent.com/mitnick-security/mitnick/main/scripts/install.ps1 -OutFile $installer
+Invoke-WebRequest https://raw.githubusercontent.com/devpaiola/mitnick/main/scripts/install.ps1 -OutFile $installer
 & $installer
 Remove-Item $installer
 ```

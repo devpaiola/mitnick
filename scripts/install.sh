@@ -1,7 +1,7 @@
 #!/bin/sh
 set -eu
 
-REPOSITORY="mitnick-security/mitnick"
+REPOSITORY="devpaiola/mitnick"
 BASE_URL="https://github.com/${REPOSITORY}/releases/latest/download"
 INSTALL_DIR=${MITNICK_INSTALL_DIR:-"${HOME}/.local/bin"}
 
