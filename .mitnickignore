@@ -1,0 +1,2 @@
+# Intentionally vulnerable samples are covered by scanner fixtures.
+testdata/**

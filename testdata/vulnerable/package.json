@@ -1,0 +1,11 @@
+{
+  "name": "mitnick-vulnerable-fixture",
+  "version": "1.0.0",
+  "dependencies": {
+    "lodash": "4.17.23",
+    "axios": "1.17.0",
+    "next": "15.5.26",
+    "react-server-dom-webpack": "19.0.0",
+    "minimist": "1.2.5"
+  }
+}

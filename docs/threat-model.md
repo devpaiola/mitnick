@@ -1,0 +1,18 @@
+# Modelo de ameaças v1
+
+| Ameaça | Mitigação presente | Limite / próximo passo |
+| --- | --- | --- |
+| Repositório tenta executar código durante o scan | Scan padrão não executa conteúdo; Gitleaks requer `--gitleaks`, recebe somente cópia dos arquivos descobertos e não lê `.gitleaks.toml` do alvo | Gitleaks executa com os privilégios do usuário e não tem sandbox de sistema operacional; ainda exige binário confiável e revisão independente. |
+| Symlink escapa da raiz | Symlinks são ignorados e paths resolvidos são revalidados contra raiz | Corrida com processo que modifica a árvore durante scan não é eliminada por handle-based traversal. |
+| Prompt injection em código ou findings | Conteúdo de arquivos de agentes não é enviado; CLIs são iniciados sem ferramentas disponíveis ao modelo; trechos são delimitados como dados e a saída é validada por schema fechado | O texto pode influenciar a resposta e o conteúdo consultivo pode ser enganoso; redaction e instruções não cobrem todos os casos. |
+| Segredo aparece no relatório | Padrões de segredo usam evidência fixa mascarada | Segredos desconhecidos podem passar; nomes de arquivo podem conter informação sensível. |
+| Segredo é enviado ao modelo | Sem IA por padrão; cada scan exige consentimento; padrões reconhecidos são mascarados; arquivos com finding `SEC-*` ou origem Gitleaks não contribuem contexto | Formatos desconhecidos e outros trechos podem conter dados sensíveis; destino, autenticação e roteamento são os configurados no CLI e não podem ser verificados pelo Mitnick. |
+| CLI selecionado excede o uso/custo esperado | Um pedido por scan, contexto/saída limitados, sessão efêmera no Codex e sem persistência de sessão no Claude | A cobrança e limites pertencem à conta/organização; o Mitnick não estima custo nem impõe teto. Configure limites de uso no cliente/conta. |
+| CLI instalado executa comportamento inesperado | O usuário seleciona explicitamente o executável encontrado no `PATH`; nenhuma raiz de projeto é passada ao processo; ferramentas do modelo são desativadas | O CLI executa com a identidade do usuário e pode seguir políticas/configurações gerenciadas. Instale clientes confiáveis; não há sandbox de sistema operacional do Mitnick. |
+| Config MCP declara comando perigoso | Auditoria textual sem executar comando | Não valida o binário ou semântica do servidor. |
+| Findings falso-positivos | Estado/confiança explícitos, recomendações e supressão com razão | Precisão ainda requer fixtures e feedback. |
+| Engine externa falha | Gitleaks opt-in tem timeout de 30s, saída limitada a 16 MiB, relatório redigido e erro parcial explícito; `doctor` não executa engines. OSV é consultado pelo conector Go de `intel update`, com cache anterior preservado quando a atualização falha. | Somente Gitleaks 8.16.0 foi verificado localmente; OSV-Scanner externo não integrado e isolamento do processo Gitleaks não é sandbox de SO. |
+| Abuso de recursos por arquivos grandes ou árvores profundas | Limites de 50 mil arquivos, 100 mil entradas, bytes totais, 2 MiB por arquivo e cancelamento/timeout | Não há isolamento por cgroup nem orçamento separado para cada regra. |
+| Saída do modelo tenta propor correção ou referenciar evidência inventada | Schema JSON fechado; campos de correção/patch desconhecidos rejeitados; assessment limitado; IDs, fingerprints, evidências, CWE e referências validados; conteúdo nunca é executado | Texto consultivo ainda pode ser enganoso; mantenha revisão humana e não trate hipótese como finding validado. |
+
+Dados fora do escopo não são lidos intencionalmente. Relatórios podem conter paths e findings do projeto; mantenha-os dentro do controle de acesso do usuário.

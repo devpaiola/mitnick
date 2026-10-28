@@ -1,0 +1,64 @@
+name: Release
+on:
+  push:
+    tags: ['v*']
+permissions: {}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+      attestations: write
+      artifact-metadata: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+        with:
+          go-version: '1.27.x'
+      - name: Build and verify release packages
+        run: |
+          bash scripts/package-release.sh "$GITHUB_REF_NAME" "$RUNNER_TEMP/mitnick-dist"
+          cd "$RUNNER_TEMP/mitnick-dist"
+          sha256sum -c SHA256SUMS
+      - name: Attest release packages
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6 # v4.2.2
+        with:
+          subject-path: ${{ runner.temp }}/mitnick-dist/mitnick_*.tar.gz
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: mitnick-release-packages
+          path: ${{ runner.temp }}/mitnick-dist/*
+          if-no-files-found: error
+          retention-days: 7
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: mitnick-release-packages
+          path: ${{ runner.temp }}/mitnick-dist
+      - name: Verify release checksums
+        run: |
+          cd "$RUNNER_TEMP/mitnick-dist"
+          sha256sum -c SHA256SUMS
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          release_kind=()
+          if [[ "$GITHUB_REF_NAME" == *-* ]]; then
+            release_kind+=(--prerelease)
+          fi
+          gh release create "$GITHUB_REF_NAME" \
+            --verify-tag \
+            --title "Mitnick $GITHUB_REF_NAME" \
+            --generate-notes \
+            "${release_kind[@]}" \
+            "$RUNNER_TEMP/mitnick-dist/"*.tar.gz \
+            "$RUNNER_TEMP/mitnick-dist/SHA256SUMS"

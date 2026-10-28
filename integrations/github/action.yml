@@ -1,0 +1,37 @@
+name: Mitnick security scan
+description: Run Mitnick static code and agent configuration checks.
+inputs:
+  path:
+    description: Directory to scan
+    required: false
+    default: .
+  fail-on:
+    description: Severity threshold
+    required: false
+    default: high
+  sarif-file:
+    description: Destination SARIF file
+    required: false
+    default: mitnick.sarif
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      with:
+        go-version: '1.27.x'
+    - name: Build Mitnick
+      shell: bash
+      run: |
+        MITNICK_BIN="$RUNNER_TEMP/mitnick"
+        if [[ "$RUNNER_OS" == "Windows" ]]; then MITNICK_BIN="$MITNICK_BIN.exe"; fi
+        cd "$GITHUB_ACTION_PATH/../.."
+        go build -o "$MITNICK_BIN" ./cmd/mitnick
+        echo "MITNICK_BIN=$MITNICK_BIN" >> "$GITHUB_ENV"
+    - name: Scan repository
+      shell: bash
+      env:
+        MITNICK_PATH: ${{ inputs.path }}
+        MITNICK_FAIL_ON: ${{ inputs.fail-on }}
+        MITNICK_SARIF: ${{ inputs.sarif-file }}
+      run: |
+        "$MITNICK_BIN" scan "$MITNICK_PATH" --format sarif --fail-on "$MITNICK_FAIL_ON" --output "$MITNICK_SARIF"

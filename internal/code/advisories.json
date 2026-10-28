@@ -1,0 +1,372 @@
+[
+  {
+    "ecosystem": "npm",
+    "package": "lodash",
+    "id": "GHSA-xxjr-mmjv-4gpg",
+    "severity": "medium",
+    "introduced": "4.0.0",
+    "fixed": "4.17.23",
+    "summary": "Poluição de protótipo nas funções _.unset e _.omit",
+    "url": "https://github.com/advisories/GHSA-xxjr-mmjv-4gpg"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "lodash",
+    "id": "GHSA-f23m-r3pf-42rh",
+    "severity": "medium",
+    "introduced": "4.17.23",
+    "fixed": "4.18.0",
+    "summary": "Poluição de protótipo por contorno com caminho em array",
+    "url": "https://github.com/advisories/GHSA-f23m-r3pf-42rh"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "lodash",
+    "id": "GHSA-r5fr-rjxr-66jc",
+    "severity": "high",
+    "introduced": "4.0.0",
+    "fixed": "4.18.0",
+    "summary": "Injeção de código em imports da função _.template",
+    "url": "https://github.com/advisories/GHSA-r5fr-rjxr-66jc"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-pf86-5x62-jrwf",
+    "severity": "high",
+    "introduced": "0.0.0",
+    "fixed": "0.31.1",
+    "summary": "Gadgets de poluição de protótipo no Axios 0.x podem alterar respostas ou sequestrar requisições quando Object.prototype foi poluído",
+    "url": "https://github.com/advisories/GHSA-pf86-5x62-jrwf"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-pf86-5x62-jrwf",
+    "severity": "high",
+    "introduced": "1.0.0",
+    "fixed": "1.15.1",
+    "summary": "Gadgets de poluição de protótipo no Axios 1.x podem alterar respostas ou sequestrar requisições quando Object.prototype foi poluído",
+    "url": "https://github.com/advisories/GHSA-pf86-5x62-jrwf"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-42h9-826w-cgv3",
+    "severity": "medium",
+    "introduced": "0.28.0",
+    "fixed": "0.33.0",
+    "summary": "Recursão excessiva em formDataToJSON pode causar negação de serviço com nomes de campos FormData controlados por usuário",
+    "url": "https://github.com/advisories/GHSA-42h9-826w-cgv3"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-42h9-826w-cgv3",
+    "severity": "medium",
+    "introduced": "1.0.0",
+    "fixed": "1.18.0",
+    "summary": "Recursão excessiva em formDataToJSON pode causar negação de serviço com nomes de campos FormData controlados por usuário",
+    "url": "https://github.com/advisories/GHSA-42h9-826w-cgv3"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-gcfj-64vw-6mp9",
+    "severity": "high",
+    "introduced": "0.31.1",
+    "fixed": "0.33.0",
+    "summary": "Proxy herdado pode ser usado após interceptor recriar a configuração como objeto comum, sob poluição de Object.prototype",
+    "url": "https://github.com/advisories/GHSA-gcfj-64vw-6mp9"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-gcfj-64vw-6mp9",
+    "severity": "high",
+    "introduced": "1.15.2",
+    "fixed": "1.18.0",
+    "summary": "Proxy herdado pode ser usado após interceptor recriar a configuração como objeto comum, sob poluição de Object.prototype",
+    "url": "https://github.com/advisories/GHSA-gcfj-64vw-6mp9"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-3pq3-5fj3-cg6v",
+    "severity": "high",
+    "introduced": "1.13.0",
+    "fixed": "1.20.0",
+    "summary": "Adaptador HTTP/2 não aplica controles lookup/proxy configurados em cenários que dependem deles para bloquear SSRF",
+    "url": "https://github.com/advisories/GHSA-3pq3-5fj3-cg6v"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-m8m8-qj5v-23w3",
+    "severity": "high",
+    "introduced": "1.15.2",
+    "fixed": "1.20.0",
+    "summary": "Adaptador HTTP do Node pode usar createConnection herdado sob poluição de Object.prototype",
+    "url": "https://github.com/advisories/GHSA-m8m8-qj5v-23w3"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-r4gj-5m52-g5wh",
+    "severity": "high",
+    "introduced": "1.17.0",
+    "fixed": "1.20.0",
+    "summary": "Adaptador fetch não aplica maxRedirects=0 e pode seguir redirecionamentos em cenários de SSRF",
+    "url": "https://github.com/advisories/GHSA-r4gj-5m52-g5wh"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-x97p-jq2g-jp4f",
+    "severity": "high",
+    "introduced": "0.28.0",
+    "fixed": "0.34.0",
+    "summary": "Opções de toFormData podem ser herdadas após poluição de Object.prototype e alterar a serialização",
+    "url": "https://github.com/advisories/GHSA-x97p-jq2g-jp4f"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "axios",
+    "id": "GHSA-x97p-jq2g-jp4f",
+    "severity": "high",
+    "introduced": "1.15.1",
+    "fixed": "1.20.0",
+    "summary": "Opções de toFormData podem ser herdadas após poluição de Object.prototype e alterar a serialização",
+    "url": "https://github.com/advisories/GHSA-x97p-jq2g-jp4f"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "next",
+    "id": "GHSA-mcj8-r9mp-w47p",
+    "severity": "medium",
+    "introduced": "15.0.0",
+    "fixed": "15.5.27",
+    "summary": "Cache de páginas SSG/ISR pode ser envenenado em configurações Next.js afetadas, substituindo conteúdo entre usuários",
+    "url": "https://github.com/advisories/GHSA-mcj8-r9mp-w47p"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "next",
+    "id": "GHSA-mcj8-r9mp-w47p",
+    "severity": "medium",
+    "introduced": "16.0.0",
+    "fixed": "16.3.8",
+    "summary": "Cache de páginas SSG/ISR pode ser envenenado em configurações Next.js afetadas, substituindo conteúdo entre usuários",
+    "url": "https://github.com/advisories/GHSA-mcj8-r9mp-w47p"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "next",
+    "id": "GHSA-4jqv-mc3x-m676",
+    "severity": "medium",
+    "introduced": "15.0.0",
+    "fixed": "15.5.27",
+    "summary": "Páginas SSG/ISR self-hosted podem servir cache de rota incorreta quando a aplicação usa Pages Router",
+    "url": "https://github.com/advisories/GHSA-4jqv-mc3x-m676"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "next",
+    "id": "GHSA-4jqv-mc3x-m676",
+    "severity": "medium",
+    "introduced": "16.0.0",
+    "fixed": "16.3.8",
+    "summary": "Páginas SSG/ISR self-hosted podem servir cache de rota incorreta quando a aplicação usa Pages Router",
+    "url": "https://github.com/advisories/GHSA-4jqv-mc3x-m676"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-parcel",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.0.0",
+    "fixed": "19.0.1",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-parcel",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.1.0",
+    "fixed": "19.1.2",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-parcel",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.2.0",
+    "fixed": "19.2.1",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-turbopack",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.0.0",
+    "fixed": "19.0.1",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-turbopack",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.1.0",
+    "fixed": "19.1.2",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-turbopack",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.2.0",
+    "fixed": "19.2.1",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-webpack",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.0.0",
+    "fixed": "19.0.1",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-webpack",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.1.0",
+    "fixed": "19.1.2",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-webpack",
+    "id": "GHSA-fv66-9v8q-g76r",
+    "severity": "critical",
+    "introduced": "19.2.0",
+    "fixed": "19.2.1",
+    "summary": "Execução remota de código em React Server Components; aplicabilidade depende de uso de RSC no servidor",
+    "url": "https://github.com/advisories/GHSA-fv66-9v8q-g76r"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-parcel",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.1.0",
+    "fixed": "19.1.9",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-parcel",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.2.0",
+    "fixed": "19.2.8",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-turbopack",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.0.0",
+    "fixed": "19.0.8",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-turbopack",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.1.0",
+    "fixed": "19.1.9",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-turbopack",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.2.0",
+    "fixed": "19.2.8",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-webpack",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.0.0",
+    "fixed": "19.0.8",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-webpack",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.1.0",
+    "fixed": "19.1.9",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "react-server-dom-webpack",
+    "id": "GHSA-wx67-qw84-cm4g",
+    "severity": "high",
+    "introduced": "19.2.0",
+    "fixed": "19.2.8",
+    "summary": "Requisições especialmente formadas podem causar negação de serviço em endpoints de Server Functions",
+    "url": "https://github.com/advisories/GHSA-wx67-qw84-cm4g"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "minimist",
+    "id": "GHSA-xvch-5gv4-984h",
+    "severity": "critical",
+    "introduced": "0.0.0",
+    "fixed": "0.2.4",
+    "summary": "Poluição de protótipo na função setKey de minimist",
+    "url": "https://github.com/advisories/GHSA-xvch-5gv4-984h"
+  },
+  {
+    "ecosystem": "npm",
+    "package": "minimist",
+    "id": "GHSA-xvch-5gv4-984h",
+    "severity": "critical",
+    "introduced": "1.0.0",
+    "fixed": "1.2.6",
+    "summary": "Poluição de protótipo na função setKey de minimist",
+    "url": "https://github.com/advisories/GHSA-xvch-5gv4-984h"
+  }
+]

@@ -1,0 +1,13 @@
+# RFC-004 — BYOAI e privacidade
+
+**Estado:** substituída pela integração de clientes CLI descrita na RFC-006. **Data:** 2026-10-25.
+
+O desenho inicial de endpoints HTTP configuráveis (Ollama/OpenAI-compatible), modelos e tarifas foi removido. A integração atual seleciona o Codex CLI ou Claude Code já instalado e autenticado pelo usuário. O perfil privado armazena somente o ID do cliente (`codex` ou `claude`); não contém endpoint, modelo, token ou credenciais.
+
+A IA continua opt-in. `mitnick ai connect <codex|claude>` verifica o estado de login local pelo próprio CLI e salva a seleção. `mitnick ai test` faz uma chamada de modelo com uma instrução fixa e sem conteúdo do projeto; pode consumir créditos. Cada análise exige `--ai --ai-consent` ou a confirmação de envio `r` na tela Scan Project. O consentimento vale para uma execução.
+
+O contexto da análise contém IDs, fingerprints, enums de domínio/severidade/confiança/estado, listas permitidas de CWE/referências e até cinco linhas ao redor de findings de código, exceto findings de dependência. O contexto fonte é limitado a 16 KiB; cada scan envia no máximo 20 findings; o prompt fica limitado a 40 KiB e a resposta a 1 MiB. Caminhos, títulos, evidências livres, metadados de pacotes e arquivos de instruções/configuração de agentes não são enviados. Padrões conhecidos de credenciais e blocos de chave privada são mascarados; em arquivos com finding `SEC-*` ou origem Gitleaks, todo o contexto fonte é omitido. A cobertura de redaction é incompleta; o usuário deve revisar e consentir com a transferência potencial de trechos sensíveis.
+
+O Codex recebe contexto por stdin via `codex exec`, em diretório temporário vazio, com sessão efêmera, sandbox `read-only`, sem arquivos de configuração/rules do usuário, ferramentas de shell, busca, plugins, apps, MCP, hooks ou subagentes. Se o CLI rejeitar alguma opção de restrição, a revisão falha sem fallback permissivo. Claude Code exige versão 2.1.248 ou posterior e usa `--restricted`, `--safe-mode`, `--tools ""`, bloqueio de ferramentas MCP, sem persistência de sessão e com um turno. Também recebe contexto por stdin e trabalha fora do alvo. Respostas são validadas pelo schema consultivo e nunca executadas ou aplicadas.
+
+Essas opções controlam ferramentas solicitadas pelo modelo. O executável e qualquer configuração gerenciada pelo cliente continuam sob autoridade do usuário ou da organização; o Mitnick não inspeciona o roteamento, a conta, o modelo, a cobrança ou políticas administradas do CLI. Os relatórios guardam somente cliente selecionado, versão do prompt e registro do consentimento.
