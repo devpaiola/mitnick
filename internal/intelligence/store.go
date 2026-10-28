@@ -187,7 +187,11 @@ func Open(path string) (*Store, error) {
 			}
 		}
 	}
-	uri := (&url.URL{Scheme: "file", Path: filepath.ToSlash(abs)}).String()
+	uriPath := filepath.ToSlash(abs)
+	if runtime.GOOS == "windows" && len(uriPath) >= 2 && uriPath[1] == ':' {
+		uriPath = "/" + uriPath
+	}
+	uri := (&url.URL{Scheme: "file", Path: uriPath}).String()
 	return openDatabase(uri+"?_pragma=busy_timeout(5000)&_pragma=foreign_keys(1)", abs)
 }
 

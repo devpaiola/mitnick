@@ -6,6 +6,7 @@ import (
 	"errors"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"testing"
 	"time"
@@ -179,7 +180,7 @@ func FuzzGitleaksReport(f *testing.F) {
 
 func TestGitleaksRejectsEngineInsideScannedRoot(t *testing.T) {
 	root, _ := scannerTestPaths(t)
-	binary := filepath.Join(root, "gitleaks")
+	binary := filepath.Join(root, testBinaryName())
 	if err := os.WriteFile(binary, []byte("fake"), 0o700); err != nil {
 		t.Fatal(err)
 	}
@@ -199,11 +200,18 @@ func scannerTestPaths(t *testing.T) (string, string) {
 	if err := os.Mkdir(binDir, 0o700); err != nil {
 		t.Fatal(err)
 	}
-	binary := filepath.Join(binDir, "gitleaks")
+	binary := filepath.Join(binDir, testBinaryName())
 	if err := os.WriteFile(binary, []byte("test executable"), 0o700); err != nil {
 		t.Fatal(err)
 	}
 	return root, binary
+}
+
+func testBinaryName() string {
+	if runtime.GOOS == "windows" {
+		return "gitleaks.exe"
+	}
+	return "gitleaks"
 }
 
 func hasArgument(args []string, target string) bool {
